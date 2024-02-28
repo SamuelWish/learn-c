@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <clocale>
+#include <string.h>
+#include <ctype.h>
+#define SIZE 10
+
+void getSymbol(char arr[], int n);
+void* findSymbol(char* arr, char ch);
+
+int main(void)
+{	setlocale(LC_ALL, "Russian"); //Добавим русский язык
+
+char arr1[SIZE];
+const char *arr2 = "apd";
+
+getSymbol(arr1, SIZE);
+
+while (*arr2)
+	findSymbol(arr1, *arr2++);
+
+	return 0;
+}
+void* findSymbol(char* arr, char ch)
+{
+	
+	while (*arr)
+	{
+		if (*arr != ch)
+			arr++;
+		else
+		{
+			printf("С символом %c есть совпадение!\n", ch);
+			return arr;
+		}
+	}
+	printf("Символ %c в строке не найден((\n", ch);
+	return NULL;
+}
+void getSymbol(char arr[], int n)
+{
+	for (int i = 0; i < n-1; i++)
+		arr[i] = getchar();
+	arr[n-1] = '\0';
+	puts(arr);
+}
