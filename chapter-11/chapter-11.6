@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <clocale>
+#include <string.h>
+#include <ctype.h>
+#define SIZE1 40
+#define SIZE2 50
+
+char* stringCopymaker(char* s1, char* s2, int n);
+
+int main(void)
+{	setlocale(LC_ALL, "Russian"); //Добавим русский язык
+
+char dest[SIZE1];
+char src[SIZE2];
+int n = 20;
+printf("введите не более 20 символов: ");
+gets_s(src);
+puts(stringCopymaker(dest, src, n));
+
+
+	return 0;
+}
+char* stringCopymaker(char* s1, char* s2, int n)
+{
+    int i;
+     for (i = 0; i < n && s2[i] != '\0'; i++) {
+        s1[i] = s2[i];
+    }
+    for (; i < n; i++) {
+        s1[i] = '\0';
+    }
+
+    return s1;
+}
